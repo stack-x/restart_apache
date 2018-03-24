@@ -17,7 +17,8 @@ for FILENAME in $VHOSTS
 do
   if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
   then
-    FILEMATCH=true;
+    FILEMATCH=true
+    break
   fi
 done
 echo "$FILEMATCH"
