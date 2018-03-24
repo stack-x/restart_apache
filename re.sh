@@ -14,8 +14,10 @@ fi
 
 for FILENAME in $VHOSTS
 do
-  echo $FILENAME
-  echo "/etc/apache2/sites-available/${CONFIG}.conf"
+  if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
+  then
+    echo "It's a match"
+  fi
 done
 exit 1 #to be removed later
 
