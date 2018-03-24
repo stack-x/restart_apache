@@ -3,6 +3,7 @@
 CONFIG="$1"
 COMMAND="$2"
 FILEMATCH=false;
+VALID_VHOSTS='';
 
 # Grab a list of all virtual-host files
 VHOSTS=/etc/apache2/sites-available/*.conf
@@ -16,7 +17,7 @@ fi
 for FILENAME in $VHOSTS
 do
 
-  echo ${FILENAME:29:-5}
+  VALID_VHOSTS="${VALID_VHOSTS} ${FILENAME:29:-5}";
 
   if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
   then
@@ -25,7 +26,8 @@ do
   fi
 done
 
-exit 1
+echo "$VALID_VHOSTS";
+exit 1 #To be removed
 
 if [ $FILEMATCH  == false ]
 then
