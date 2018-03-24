@@ -2,8 +2,8 @@
 
 CONFIG="$1"
 COMMAND="$2"
-FILEMATCH=false;
-VALID_VHOSTS='';
+FILEMATCH=false
+VALID_VHOSTS=''
 
 # Grab a list of all virtual-host files
 VHOSTS=/etc/apache2/sites-available/*.conf
