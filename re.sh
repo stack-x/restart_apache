@@ -2,6 +2,7 @@
 
 CONFIG="$1"
 COMMAND="$2"
+FILEMATCH=false;
 
 # Grab a list of all virtual-host files
 VHOSTS=/etc/apache2/sites-available/*.conf
@@ -16,9 +17,10 @@ for FILENAME in $VHOSTS
 do
   if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
   then
-    echo "It's a match"
+    FILEMATCH=true;
   fi
 done
+echo "$FILEMATCH"
 exit 1 #to be removed later
 
 # reload is allowed
