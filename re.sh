@@ -2,12 +2,20 @@
 
 CONFIG="$1"
 COMMAND="$2"
+# Grab a list of all virtual-host files
+VHOSTS=/etc/apache2/sites-available/*.conf
 
 if [ $# -ne 2 ]
 then
     echo "ERROR: $0 requires two paramters {virtual-host} {restart|reload}"
     exit 1
 fi
+
+for FILENAME in $VHOSTS
+do
+  echo $FILENAME
+done
+exit 1
 
 # reload is allowed
 if [ "$COMMAND" == "reload" ] || [ "$COMMAND" == "restart" ]
