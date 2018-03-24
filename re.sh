@@ -24,7 +24,7 @@ done
 
 if [ $FILEMATCH  == false ]
 then
-    echo "ERROR: Invalid ${CONFIG} is an invalid virtual-host file"
+    echo "ERROR: Invalid ${CONFIG} is NOT a valid virtual-host file"
     exit 1
 fi
 
@@ -42,7 +42,7 @@ then
     sudo a2ensite "$CONFIG"
     sudo service apache2 "$COMMAND"
 else
-    echo "ERROR: $COMMAND is an invalid service command {restart|reload}"
+    echo "ERROR: $COMMAND is NOT a valid service command {restart|reload}"
     exit 1
 fi
 
