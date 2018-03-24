@@ -15,12 +15,17 @@ fi
 
 for FILENAME in $VHOSTS
 do
+
+  echo ${FILENAME:29:-5}
+
   if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
   then
     FILEMATCH=true
     break
   fi
 done
+
+exit 1
 
 if [ $FILEMATCH  == false ]
 then
