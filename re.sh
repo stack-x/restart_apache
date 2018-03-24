@@ -17,7 +17,12 @@ fi
 for FILENAME in $VHOSTS
 do
 
-  VALID_VHOSTS="${VALID_VHOSTS} ${FILENAME:29:-5}";
+  if [ -z  "$VALID_VHOSTS" ]
+    then
+      VALID_VHOSTS="${FILENAME:29:-5}"
+    else
+      VALID_VHOSTS="${VALID_VHOSTS}|${FILENAME:29:-5}"
+    fi
 
   if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
   then
