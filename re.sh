@@ -2,6 +2,7 @@
 
 CONFIG="$1"
 COMMAND="$2"
+
 # Grab a list of all virtual-host files
 VHOSTS=/etc/apache2/sites-available/*.conf
 
@@ -14,8 +15,9 @@ fi
 for FILENAME in $VHOSTS
 do
   echo $FILENAME
+  echo "/etc/apache2/sites-available/${CONFIG}.conf"
 done
-exit 1
+exit 1 #to be removed later
 
 # reload is allowed
 if [ "$COMMAND" == "reload" ] || [ "$COMMAND" == "restart" ]
