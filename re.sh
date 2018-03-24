@@ -21,6 +21,13 @@ do
     break
   fi
 done
+
+if [ $FILEMATCH  == false ]
+then
+    echo "ERROR: Invalid ${CONFIG} is an invalid virtual-host file"
+    exit 1
+fi
+
 echo "$FILEMATCH"
 exit 1 #to be removed later
 
