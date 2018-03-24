@@ -28,9 +28,6 @@ then
     exit 1
 fi
 
-echo "$FILEMATCH"
-exit 1 #to be removed later
-
 # reload is allowed
 if [ "$COMMAND" == "reload" ] || [ "$COMMAND" == "restart" ]
 then
