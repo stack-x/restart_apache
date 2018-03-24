@@ -31,12 +31,9 @@ do
   fi
 done
 
-echo "$VALID_VHOSTS";
-exit 1 #To be removed
-
 if [ $FILEMATCH  == false ]
 then
-    echo "ERROR: Invalid ${CONFIG} is NOT a valid virtual-host file"
+    echo "ERROR: Invalid ${CONFIG} is NOT a valid virtual-host file {$VALID_VHOSTS}"
     exit 1
 fi
 
