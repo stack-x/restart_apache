@@ -20,7 +20,7 @@ VHOSTS=/etc/apache2/sites-available/*.conf
 # Did the user provide the required number of paramters?
 if [ $# -ne 2 ]
 then
-    echo "ERROR: $0 requires two paramters {virtual-host} {restart|reload}"
+    echo -e "\e[31mERROR:\e[0m $0 requires two paramters \n* a virtual-host configuration \n* a service command"
     exit 1
 fi
 
@@ -33,9 +33,9 @@ do
   # is an error
   if [ -z  "$VALID_VHOSTS" ]
     then
-      VALID_VHOSTS="${FILENAME:29:-5}"
+      VALID_VHOSTS="\n* ${FILENAME:29:-5}"
     else
-      VALID_VHOSTS="${VALID_VHOSTS}|${FILENAME:29:-5}"
+      VALID_VHOSTS="${VALID_VHOSTS}\n* ${FILENAME:29:-5}"
     fi
 
   if [ "$FILENAME" == "/etc/apache2/sites-available/${CONFIG}.conf" ]
@@ -50,7 +50,7 @@ done
 # I we could match the frist argument to a virtual-hosts preset the user with an error
 if [ $FILEMATCH  == false ]
 then
-    echo "ERROR: Invalid ${CONFIG} is NOT a valid virtual-host file {$VALID_VHOSTS}"
+    echo -e "\e[31mERROR:\e[0m Invalid \e[1m${CONFIG}\e[0m is NOT a valid virtual-host file\nPlease choose from the following ${VALID_VHOSTS}"
     exit 1
 fi
 
@@ -69,8 +69,8 @@ then
     sudo a2ensite "$CONFIG"
     sudo service apache2 "$COMMAND"
 else
-# Otherwise present the user with an error.
-    echo "ERROR: $COMMAND is NOT a valid service command {restart|reload}"
+    # Otherwise present the user with an error.
+    echo -e "\e[31mERROR:\e[0m \e[1m${COMMAND}\e[0m is NOT a valid service command \n Please choose from the following \n* restart \n* reload"
     exit 1
 fi
 
